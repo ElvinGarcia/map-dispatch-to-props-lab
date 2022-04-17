@@ -21,4 +21,4 @@ class Restaurants extends Component {
 //   return { restaurants: state.restaurants }
 // }
 
-export default connect( { restaurant: state.restaurants })(Restaurants);
+export default connect(state => ( {restaurants: state.restaurants}) )(Restaurants);
