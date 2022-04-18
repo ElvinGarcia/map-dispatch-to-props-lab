@@ -23,12 +23,7 @@ export class RestaurantInput extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    // add missing code
-    // debugger
-    console.log("adding restaturant -this.state", this.state)
-    console.log("this.props.restaurants", this.props.restaurants)
-    this.props.restaurant(this.state)
-    this.setState(this.state)
+    this.props.addRestaurant(this.state)
   }
 
   render() {
@@ -54,23 +49,16 @@ export class RestaurantInput extends Component {
   }
 };
 
-const mapStateToProps = state => {
-  console.log("inside mapStateToProps -state", state)
-  return { restaurants:[{
-    name: state.name,
-    location: state.location
-  }]
-  };
-};
 
-const mapDispatchToProps = dispatch => {
-  console.log("inside mapDispatchToProps -dispatch", dispatch)
-  return {
-    restaurant: (restaurant) => {
-      dispatch(addRestaurant(restaurant))
-    }
-  };
-};
 
-//connect this component by wrapping RestaurantInput below
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantInput);
+// const mapDispatchToProps = dispatch => {
+//   console.log("inside mapDispatchToProps -dispatch", dispatch)
+//   return {
+//     addRestaurant: (newReataurant) => {
+//       dispatch(addRestaurant(newReataurant))
+//     }
+//   };
+// };
+
+
+export default connect(null, {addRestaurant})(RestaurantInput);
